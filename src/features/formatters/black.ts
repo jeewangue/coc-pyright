@@ -8,18 +8,18 @@ export class BlackFormatter extends BaseFormatter {
   }
 
   public formatDocument(document: TextDocument, options: FormattingOptions, token: CancellationToken, range?: Range): Thenable<TextEdit[]> {
-    const formatSelection = range ? range : false;
+    // const formatSelection = range ? range : false;
 
-    if (formatSelection) {
-      const errorMessage = async () => {
-        this.outputChannel.appendLine('Black does not support the "Format Selection" command');
-        // Black does not support partial formatting on purpose.
-        window.showErrorMessage('Black does not support the "Format Selection" command');
-        return [] as TextEdit[];
-      };
+    // if (formatSelection) {
+    //   const errorMessage = async () => {
+    //     this.outputChannel.appendLine('Black does not support the "Format Selection" command');
+    //     // Black does not support partial formatting on purpose.
+    //     window.showErrorMessage('Black does not support the "Format Selection" command');
+    //     return [] as TextEdit[];
+    //   };
 
-      return errorMessage();
-    }
+    //   return errorMessage();
+    // }
 
     const blackArgs = ['--diff', '--quiet'];
     if (this.pythonSettings.formatting.blackArgs.length > 0) {

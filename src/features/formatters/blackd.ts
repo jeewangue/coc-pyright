@@ -59,13 +59,13 @@ export class BlackdFormatter extends BaseFormatter {
   }
 
   public formatDocument(document: TextDocument, _options: FormattingOptions, _token: CancellationToken, range?: Range): Thenable<TextEdit[]> {
-    if (range) {
-      const msg = 'blackd does not support range formatting';
-      this.outputChannel.appendLine(msg);
-      window.showErrorMessage(msg);
-      return Promise.resolve([]);
-    }
-    if (this.pythonSettings.stdLibs.some(p => Uri.parse(document.uri).fsPath.startsWith(p))) {
+    // if (range) {
+    //   const msg = 'blackd does not support range formatting';
+    //   this.outputChannel.appendLine(msg);
+    //   window.showErrorMessage(msg);
+    //   return Promise.resolve([]);
+    // }
+    if (this.pythonSettings.stdLibs.some((p) => Uri.parse(document.uri).fsPath.startsWith(p))) {
       return Promise.resolve([]);
     }
 
